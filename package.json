@@ -1,0 +1,28 @@
+{
+  "name": "swipe-templates",
+  "version": "1.0.0",
+  "description": "a bundle of swipe.js templates",
+  "homepage": "https://github.com/james2doyle/swipe-templates",
+  "author": {
+    "name": "James Doyle",
+    "email": "james2doyle@gmail.com",
+    "url": "http://ohdoylerules.com/"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "dependencies": {
+    "grunt": "~0.4.1"
+  },
+  "devDependencies": {
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-sass": "*",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-autoprefixer": "~0.3.0"
+  }
+}

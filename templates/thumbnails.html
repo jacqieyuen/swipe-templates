@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Swipe.js Thumbnails</title>
+  <link rel="stylesheet" href="../css/style.css" media="screen" />
+</head>
+<body>
+  <div class="content">
+    <div class="grid">
+      <div class="col-1-1">
+        <div id="slider" class="swipe">
+          <div class="swipe-wrap">
+            <div>
+              <img src="http://placehold.it/1264x400/23a12a/fffffff" alt="">
+            </div>
+            <div>
+              <img src="http://placehold.it/1264x400/c93742/fffffff" alt="">
+            </div>
+            <div>
+              <img src="http://placehold.it/1264x400/6894d1/fffffff" alt="">
+            </div>
+          </div>
+          <div class="thumbnails">
+            <a href="#1" class="active"><img src="http://placehold.it/100x40/23a12a/fffffff" alt=""></a>
+            <a href="#2"><img src="http://placehold.it/100x40/c93742/fffffff" alt=""></a>
+            <a href="#3"><img src="http://placehold.it/100x40/6894d1/fffffff" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="../js/swipe.js"></script>
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+      window.mySwipe = new Swipe(document.getElementById('slider'), {
+        startSlide: 0,
+        speed: 300,
+        auto: 4000,
+        continuous: true,
+        disableScroll: false,
+        stopPropagation: false,
+        callback: function(index, elem) {
+          console.log('slide changed');
+          console.log(index, elem);
+        },
+        slideMove: function(index, elem) {
+          console.log('slide started moving');
+          console.log(index, elem);
+        },
+        transitionEnd: function(index, elem) {
+          console.log('slide finished changing');
+          document.querySelector('.thumbnails a.active').classList.remove('active');
+          document.querySelectorAll('.thumbnails a')[index].classList.add('active');
+          console.log(index, elem);
+        }
+      });
+      function handlePagi() {
+        event.preventDefault();
+        var index = parseInt(this.hash.slice(1), 10);
+        mySwipe.slide(index - 1);
+        return false;
+      }
+      var dots = document.querySelectorAll('.thumbnails a');
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].addEventListener('click', handlePagi);
+      }
+    });
+  </script>
+</body>
+</html>

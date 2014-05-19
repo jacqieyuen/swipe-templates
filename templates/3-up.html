@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Swipe.js Thumbnails</title>
+  <link rel="stylesheet" href="../css/style.css" media="screen" />
+</head>
+<body>
+  <div class="content">
+    <div class="grid">
+      <div class="col-1-1">
+        <div id="slider" class="swipe">
+          <div class="swipe-wrap three-up">
+            <div>
+            <img src="http://placehold.it/422x400/23a12a/fffffff" alt="">
+              <img src="http://placehold.it/422x400/c93742/fffffff" alt="">
+              <img src="http://placehold.it/422x400/6894d1/fffffff" alt="">
+            </div>
+            <div>
+            <img src="http://placehold.it/422x400/23a12a/fffffff" alt="">
+              <img src="http://placehold.it/422x400/6894d1/fffffff" alt="">
+              <img src="http://placehold.it/422x400/c93742/fffffff" alt="">
+            </div>
+            <div>
+            <img src="http://placehold.it/422x400/c93742/fffffff" alt="">
+              <img src="http://placehold.it/422x400/23a12a/fffffff" alt="">
+              <img src="http://placehold.it/422x400/6894d1/fffffff" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="../js/swipe.js"></script>
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+      window.mySwipe = new Swipe(document.getElementById('slider'), {
+        startSlide: 0,
+        speed: 300,
+        auto: 4000,
+        continuous: true,
+        disableScroll: false,
+        stopPropagation: false,
+        callback: function(index, elem) {
+          console.log('slide changed');
+          console.log(index, elem);
+        },
+        slideMove: function(index, elem) {
+          console.log('slide started moving');
+          console.log(index, elem);
+        },
+        transitionEnd: function(index, elem) {
+          console.log('slide finished changing');
+          console.log(index, elem);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

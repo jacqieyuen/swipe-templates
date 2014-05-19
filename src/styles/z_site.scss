@@ -1,0 +1,255 @@
+@import "imports/__normalize";
+/* normalize end */
+@import "imports/_grid";
+/* grid ends */
+@import "imports/_mixins";
+
+// [class^="icon"] {
+//   position: relative;
+//   top: 0.1em;
+// }
+
+$blue: #A0C3C7;
+$yellow: #ECD271;
+$green: #CDF0B0;
+$gray: #ECF3F9;
+$dark: #0C0C0C;
+
+html {
+  min-height: 100%;
+}
+
+body {
+  font: normal normal 400 14px/1.5em "Helevetica Neue",Helevetica,Arial,sans-serf;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%
+}
+
+.clearfix {
+  @include clearfix();
+}
+
+*, *:after, *:before {
+  @include box-sizing(border-box);
+}
+
+::-moz-focus-inner {
+  border: 0;
+}
+
+a {
+  color: $blue;
+  &:hover {
+    color: darken($blue, 10%);
+  }
+}
+
+h1,h2,h3,h4,h5,h6 {
+  color: $yellow;
+  font-weight: 700;
+  font-family: 'Lora', sans-serif;
+}
+
+strong {
+  font-weight: 700
+}
+
+h1 {
+  font-size: 2em;
+  margin: .67em 0
+}
+
+h2 {
+  font-size: 1.5em;
+  margin: .83em 0
+}
+
+h3 {
+  font-size: 1.17em;
+  margin: 1em 0
+}
+
+h4 {
+  font-size: 1em;
+  margin: 1.33em 0
+}
+
+h5 {
+  font-size: .83em;
+  margin: 1.67em 0
+}
+
+h6 {
+  font-size: .75em;
+  margin: 2.33em 0
+}
+
+hr {
+  height: 1px;
+  border: none;
+  @include inline-block();
+  margin: 1em 0;
+  background-color: rgba(0,0,0,0.2);
+  width: 100%;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  th {
+    text-align: left;
+  }
+}
+
+// some default placeholder style
+@include placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+form {
+  &, label, input, button, select, textarea {
+    @include inline-block();
+    width: 100%;
+    // these font styles are not inherited from the body!!
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  input, button, select, textarea {
+    outline: none;
+    border: none;
+    margin-bottom: 1em;
+    padding: 0.4em;
+    border: 1px solid rgba(0,0,0,0.2);
+    transition: border 0.2s ease;
+    &:focus {
+      border: 1px solid rgba(0,0,0,0.5);
+    }
+  }
+  input[type="submit"], button {
+    width: auto;
+    padding: 0.4em 1em;
+    &:hover {
+      background: black;
+    }
+  }
+  textarea {
+    // resize: none;
+    max-width: 100%; // no annoying >100% stretching
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 5% auto 0;
+}
+
+.responsive-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.big-leader {
+  font-size: 3em;
+}
+
+/* swipe default styles */
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+  & > div {
+    float: left;
+    width: 100%;
+    position: relative;
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+/* end swipe default styles */
+
+
+/* swipe with pagination */
+.pagination {
+  @include inline-block();
+  width: 100%;
+  text-align: center;
+  a {
+    @include inline-block();
+    width: 1em;
+    height: 1em;
+    border-radius: 0.5em;
+    background-color: $yellow;
+    transition: background-color 0.2s ease;
+    &.active, &:hover {
+      background-color: $dark;
+    }
+  }
+}
+/* end swipe pagination */
+
+/* swipe with thumbnails */
+.thumbnails {
+  @include inline-block();
+  width: 100%;
+  text-align: center;
+  a {
+    @include inline-block();
+    width: 100px;
+    height: 40px;
+    opacity: 0.4;
+    -webkit-backface-visibility: hidden;
+    transition: opacity 0.2s ease;
+    &.active, &:hover {
+      opacity: 1;
+    }
+  }
+}
+/* end swipe thumbnails */
+
+/* 3-up swipe wrap */
+.swipe-wrap.three-up {
+  & > div {
+    float: left;
+    width: 100%;
+    position: relative;
+    img {
+      max-width: 100%;
+      height: auto;
+      /* because of the inline black margin bug */
+      margin-left: -4px;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
+/* 3-up swipe wrap */
+
+/* links swipe wrap */
+.swipe-wrap.links {
+  & > a {
+    display: block;
+    float: left;
+    width: 100%;
+    position: relative;
+  }
+}
+/* links swipe wrap */
